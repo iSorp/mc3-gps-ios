@@ -1,0 +1,489 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		498A42E70923841D7EC189EF /* Pods_mc3_gps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1C61F8CF66646E7B5D47E4 /* Pods_mc3_gps.framework */; };
+		F447F187226350E600A02FE4 /* MqttController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F447F186226350E600A02FE4 /* MqttController.swift */; };
+		F4581F572263459600A7E837 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4581F562263459600A7E837 /* UITextField+Extensions.swift */; };
+		F45F620322B6A2AB00354E41 /* UserStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F61FF22B6A2AB00354E41 /* UserStructs.swift */; };
+		F45F620422B6A2AB00354E41 /* DopStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F620022B6A2AB00354E41 /* DopStructs.swift */; };
+		F45F620522B6A2AB00354E41 /* LocationStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F620122B6A2AB00354E41 /* LocationStructs.swift */; };
+		F45F620622B6A2AB00354E41 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F620222B6A2AB00354E41 /* HttpClient.swift */; };
+		F45F620822B6A2BD00354E41 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F620722B6A2BD00354E41 /* Position.swift */; };
+		F45F620A22B6A33800354E41 /* ViewControllerDop.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F620922B6A33800354E41 /* ViewControllerDop.swift */; };
+		F4BF378C227384C200FEE995 /* ViewControllerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF378B227384C200FEE995 /* ViewControllerSettings.swift */; };
+		F4FB88632261FDDA00471DDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FB88622261FDDA00471DDC /* AppDelegate.swift */; };
+		F4FB88652261FDDA00471DDC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FB88642261FDDA00471DDC /* ViewController.swift */; };
+		F4FB88682261FDDA00471DDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4FB88662261FDDA00471DDC /* Main.storyboard */; };
+		F4FB886A2261FDDB00471DDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4FB88692261FDDB00471DDC /* Assets.xcassets */; };
+		F4FB886D2261FDDB00471DDC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4FB886B2261FDDB00471DDC /* LaunchScreen.storyboard */; };
+		F4FB88952262030400471DDC /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = F4FB88942262030400471DDC /* Podfile */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		74737E460891070D675F20BF /* Pods-mc3-gps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mc3-gps.debug.xcconfig"; path = "Target Support Files/Pods-mc3-gps/Pods-mc3-gps.debug.xcconfig"; sourceTree = "<group>"; };
+		CE1C61F8CF66646E7B5D47E4 /* Pods_mc3_gps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mc3_gps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDEFBC6A888941F4C90A8F04 /* Pods-mc3-gps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mc3-gps.release.xcconfig"; path = "Target Support Files/Pods-mc3-gps/Pods-mc3-gps.release.xcconfig"; sourceTree = "<group>"; };
+		F447F186226350E600A02FE4 /* MqttController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MqttController.swift; sourceTree = "<group>"; };
+		F4581F562263459600A7E837 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
+		F45F61FF22B6A2AB00354E41 /* UserStructs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStructs.swift; sourceTree = "<group>"; };
+		F45F620022B6A2AB00354E41 /* DopStructs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DopStructs.swift; sourceTree = "<group>"; };
+		F45F620122B6A2AB00354E41 /* LocationStructs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationStructs.swift; sourceTree = "<group>"; };
+		F45F620222B6A2AB00354E41 /* HttpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
+		F45F620722B6A2BD00354E41 /* Position.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		F45F620922B6A33800354E41 /* ViewControllerDop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerDop.swift; sourceTree = "<group>"; };
+		F4BF378B227384C200FEE995 /* ViewControllerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerSettings.swift; sourceTree = "<group>"; };
+		F4FB885F2261FDDA00471DDC /* mc3-gps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mc3-gps.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4FB88622261FDDA00471DDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F4FB88642261FDDA00471DDC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F4FB88672261FDDA00471DDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F4FB88692261FDDB00471DDC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F4FB886C2261FDDB00471DDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F4FB886E2261FDDB00471DDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4FB88942262030400471DDC /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F4FB885C2261FDDA00471DDC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				498A42E70923841D7EC189EF /* Pods_mc3_gps.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		34375EDF6BA324A7EE8C4C94 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				74737E460891070D675F20BF /* Pods-mc3-gps.debug.xcconfig */,
+				EDEFBC6A888941F4C90A8F04 /* Pods-mc3-gps.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C3440302383FE6B1067A0A58 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE1C61F8CF66646E7B5D47E4 /* Pods_mc3_gps.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F45F61FD22B6A26F00354E41 /* mqtt */ = {
+			isa = PBXGroup;
+			children = (
+				F447F186226350E600A02FE4 /* MqttController.swift */,
+			);
+			path = mqtt;
+			sourceTree = "<group>";
+		};
+		F45F61FE22B6A27400354E41 /* http */ = {
+			isa = PBXGroup;
+			children = (
+				F45F620222B6A2AB00354E41 /* HttpClient.swift */,
+				F45F620022B6A2AB00354E41 /* DopStructs.swift */,
+				F45F620122B6A2AB00354E41 /* LocationStructs.swift */,
+				F45F61FF22B6A2AB00354E41 /* UserStructs.swift */,
+			);
+			path = http;
+			sourceTree = "<group>";
+		};
+		F45F620B22B6A4F300354E41 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				F4FB88642261FDDA00471DDC /* ViewController.swift */,
+				F45F620922B6A33800354E41 /* ViewControllerDop.swift */,
+				F4BF378B227384C200FEE995 /* ViewControllerSettings.swift */,
+				F4581F562263459600A7E837 /* UITextField+Extensions.swift */,
+				F4FB88662261FDDA00471DDC /* Main.storyboard */,
+				F4FB886B2261FDDB00471DDC /* LaunchScreen.storyboard */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		F45F620C22B6A53500354E41 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				F45F620722B6A2BD00354E41 /* Position.swift */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		F4FB88562261FDDA00471DDC = {
+			isa = PBXGroup;
+			children = (
+				F4FB88942262030400471DDC /* Podfile */,
+				F4FB88612261FDDA00471DDC /* mc3-gps */,
+				F4FB88602261FDDA00471DDC /* Products */,
+				C3440302383FE6B1067A0A58 /* Frameworks */,
+				34375EDF6BA324A7EE8C4C94 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		F4FB88602261FDDA00471DDC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F4FB885F2261FDDA00471DDC /* mc3-gps.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F4FB88612261FDDA00471DDC /* mc3-gps */ = {
+			isa = PBXGroup;
+			children = (
+				F4FB88622261FDDA00471DDC /* AppDelegate.swift */,
+				F45F61FE22B6A27400354E41 /* http */,
+				F45F61FD22B6A26F00354E41 /* mqtt */,
+				F45F620C22B6A53500354E41 /* util */,
+				F45F620B22B6A4F300354E41 /* view */,
+				F4FB88692261FDDB00471DDC /* Assets.xcassets */,
+				F4FB886E2261FDDB00471DDC /* Info.plist */,
+			);
+			path = "mc3-gps";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F4FB885E2261FDDA00471DDC /* mc3-gps */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4FB88872261FDDB00471DDC /* Build configuration list for PBXNativeTarget "mc3-gps" */;
+			buildPhases = (
+				2EC4186B97C031BEEF5AE7E6 /* [CP] Check Pods Manifest.lock */,
+				F4FB885B2261FDDA00471DDC /* Sources */,
+				F4FB885C2261FDDA00471DDC /* Frameworks */,
+				F4FB885D2261FDDA00471DDC /* Resources */,
+				B42048C051E4C05028509CA5 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mc3-gps";
+			productName = "mc3-gps";
+			productReference = F4FB885F2261FDDA00471DDC /* mc3-gps.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F4FB88572261FDDA00471DDC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Simon Wälti";
+				TargetAttributes = {
+					F4FB885E2261FDDA00471DDC = {
+						CreatedOnToolsVersion = 10.2;
+					};
+				};
+			};
+			buildConfigurationList = F4FB885A2261FDDA00471DDC /* Build configuration list for PBXProject "mc3-gps" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F4FB88562261FDDA00471DDC;
+			productRefGroup = F4FB88602261FDDA00471DDC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F4FB885E2261FDDA00471DDC /* mc3-gps */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F4FB885D2261FDDA00471DDC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4FB88952262030400471DDC /* Podfile in Resources */,
+				F4FB886D2261FDDB00471DDC /* LaunchScreen.storyboard in Resources */,
+				F4FB886A2261FDDB00471DDC /* Assets.xcassets in Resources */,
+				F4FB88682261FDDA00471DDC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2EC4186B97C031BEEF5AE7E6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-mc3-gps-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B42048C051E4C05028509CA5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mc3-gps/Pods-mc3-gps-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mc3-gps/Pods-mc3-gps-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mc3-gps/Pods-mc3-gps-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F4FB885B2261FDDA00471DDC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4FB88652261FDDA00471DDC /* ViewController.swift in Sources */,
+				F45F620522B6A2AB00354E41 /* LocationStructs.swift in Sources */,
+				F45F620422B6A2AB00354E41 /* DopStructs.swift in Sources */,
+				F45F620322B6A2AB00354E41 /* UserStructs.swift in Sources */,
+				F45F620622B6A2AB00354E41 /* HttpClient.swift in Sources */,
+				F4581F572263459600A7E837 /* UITextField+Extensions.swift in Sources */,
+				F4BF378C227384C200FEE995 /* ViewControllerSettings.swift in Sources */,
+				F447F187226350E600A02FE4 /* MqttController.swift in Sources */,
+				F45F620A22B6A33800354E41 /* ViewControllerDop.swift in Sources */,
+				F45F620822B6A2BD00354E41 /* Position.swift in Sources */,
+				F4FB88632261FDDA00471DDC /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F4FB88662261FDDA00471DDC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4FB88672261FDDA00471DDC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F4FB886B2261FDDB00471DDC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4FB886C2261FDDB00471DDC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F4FB88852261FDDB00471DDC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F4FB88862261FDDB00471DDC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F4FB88882261FDDB00471DDC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74737E460891070D675F20BF /* Pods-mc3-gps.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BH2L27NR9A;
+				INFOPLIST_FILE = "mc3-gps/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "private.mc3-gps";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		F4FB88892261FDDB00471DDC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EDEFBC6A888941F4C90A8F04 /* Pods-mc3-gps.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BH2L27NR9A;
+				INFOPLIST_FILE = "mc3-gps/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "private.mc3-gps";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F4FB885A2261FDDA00471DDC /* Build configuration list for PBXProject "mc3-gps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4FB88852261FDDB00471DDC /* Debug */,
+				F4FB88862261FDDB00471DDC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4FB88872261FDDB00471DDC /* Build configuration list for PBXNativeTarget "mc3-gps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4FB88882261FDDB00471DDC /* Debug */,
+				F4FB88892261FDDB00471DDC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F4FB88572261FDDA00471DDC /* Project object */;
+}

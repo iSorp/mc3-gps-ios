@@ -1,0 +1,6 @@
+framework module Pods_mc3_gps {
+  umbrella header "Pods-mc3-gps-umbrella.h"
+
+  export *
+  module * { export * }
+}
