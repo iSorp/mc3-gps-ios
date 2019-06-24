@@ -21,7 +21,6 @@
 		F408953522BE901C00F26D04 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F408953422BE901C00F26D04 /* libsqlite3.tbd */; };
 		F408953722BE922700F26D04 /* SQLiteHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F408953622BE922700F26D04 /* SQLiteHelper.swift */; };
 		F447F187226350E600A02FE4 /* MqttController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F447F186226350E600A02FE4 /* MqttController.swift */; };
-		F4581F572263459600A7E837 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4581F562263459600A7E837 /* UITextFieldExtensions.swift */; };
 		F45F620322B6A2AB00354E41 /* UserStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F61FF22B6A2AB00354E41 /* UserStructs.swift */; };
 		F45F620422B6A2AB00354E41 /* DopStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F620022B6A2AB00354E41 /* DopStructs.swift */; };
 		F45F620522B6A2AB00354E41 /* LocationStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F620122B6A2AB00354E41 /* LocationStructs.swift */; };
@@ -100,7 +99,6 @@
 		F408953422BE901C00F26D04 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		F408953622BE922700F26D04 /* SQLiteHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteHelper.swift; sourceTree = "<group>"; };
 		F447F186226350E600A02FE4 /* MqttController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MqttController.swift; sourceTree = "<group>"; };
-		F4581F562263459600A7E837 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
 		F45F61FF22B6A2AB00354E41 /* UserStructs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStructs.swift; sourceTree = "<group>"; };
 		F45F620022B6A2AB00354E41 /* DopStructs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DopStructs.swift; sourceTree = "<group>"; };
 		F45F620122B6A2AB00354E41 /* LocationStructs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationStructs.swift; sourceTree = "<group>"; };
@@ -215,7 +213,6 @@
 				F4FB88642261FDDA00471DDC /* ViewController.swift */,
 				F45F620922B6A33800354E41 /* ViewControllerDop.swift */,
 				F4BF378B227384C200FEE995 /* ViewControllerSettings.swift */,
-				F4581F562263459600A7E837 /* UITextFieldExtensions.swift */,
 				F4FB88662261FDDA00471DDC /* Main.storyboard */,
 				F4FB886B2261FDDB00471DDC /* LaunchScreen.storyboard */,
 			);
@@ -492,7 +489,6 @@
 				F45F620422B6A2AB00354E41 /* DopStructs.swift in Sources */,
 				F45F620322B6A2AB00354E41 /* UserStructs.swift in Sources */,
 				F45F620622B6A2AB00354E41 /* RestClient.swift in Sources */,
-				F4581F572263459600A7E837 /* UITextFieldExtensions.swift in Sources */,
 				F408953722BE922700F26D04 /* SQLiteHelper.swift in Sources */,
 				F4BF378C227384C200FEE995 /* ViewControllerSettings.swift in Sources */,
 				F447F187226350E600A02FE4 /* MqttController.swift in Sources */,
