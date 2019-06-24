@@ -16,20 +16,25 @@ class MqttController {
     
     let defaults = UserDefaults.standard
     let clientID = "CocoaMQTT-" + String(ProcessInfo().processIdentifier)
+    let host:String
     
     var responseMessages: [String: ((_ topic:String,_ data: String?) -> Void)?] = [:]
     
+    init() {
+        self.host = defaults.string(forKey: "mqttServer") ?? ""
+        
+    }
     
     func connect() {
         
-        client = CocoaMQTT(clientID: clientID, host: defaults.string(forKey: "server")!, port: 8883)
+        client = CocoaMQTT(clientID: clientID, host: self.host, port: 8883)
         client.allowUntrustCACertificate = true
         client.secureMQTT = true
         client.enableSSL = true
         client.autoReconnect = true;
         client.cleanSession = true
-        client.username = defaults.string(forKey: "user")!
-        client.password = defaults.string(forKey: "password")!
+        client.username = defaults.string(forKey: "mqttUser") ?? ""
+        client.password = defaults.string(forKey: "mqttPassword") ?? ""
         client.willMessage = CocoaMQTTWill(topic: "/will", message: "dieout")
         client.keepAlive = 60
         client.delegate = self

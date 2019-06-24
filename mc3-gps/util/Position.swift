@@ -9,5 +9,14 @@
 import Foundation
 
 struct Position {
-    let longitude, latitude, heigt: Double
+    
+    var longitude, latitude, altitude: Double
+    var date:String? = nil
+    
+    init(latitude:Double, longitude:Double, altitude:Double, date:String? = nil){
+        self.longitude = longitude
+        self.latitude = latitude
+        self.altitude = altitude
+        self.date = date
+    }
 }

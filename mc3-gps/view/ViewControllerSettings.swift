@@ -8,25 +8,39 @@ import MapKit
 class ViewControllerSettings: UIViewController {
     let defaults = UserDefaults.standard
     
-    @IBOutlet var serverText:UITextField!
-    @IBOutlet var userText:UITextField!
-    @IBOutlet var password:UITextField!
+    @IBOutlet var mqttServerText:UITextField!
+    @IBOutlet var mqttUserText:UITextField!
+    @IBOutlet var mqttPassword:UITextField!
     @IBOutlet var distanceFilterText:UITextField!
+    @IBOutlet var apiServerText:UITextField!
+    @IBOutlet var apiPortText:UITextField!
+    @IBOutlet var apiUserIDText:UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        serverText.text = defaults.string(forKey: "server")
-        userText.text = defaults.string(forKey: "user")
-        password.text = defaults.string(forKey: "password")
-        distanceFilterText.text = defaults.string(forKey: "distanceFilter")
+        mqttServerText.text = defaults.string(forKey: "mqttServer")
+        mqttUserText.text = defaults.string(forKey: "mqttUser")
+        mqttPassword.text = defaults.string(forKey: "mqttPassword")
         
+        apiServerText.text = defaults.string(forKey: "apiServer")
+        apiPortText.text = defaults.string(forKey: "apiPort")
+        apiUserIDText.text = defaults.string(forKey: "apiUserID")
+        
+        distanceFilterText.text = defaults.string(forKey: "distanceFilter")
     }
     
     @IBAction func setSettings(sender: UIButton!) {
-        defaults.set(serverText.text, forKey: "server")
-        defaults.set(userText.text, forKey: "user")
-        defaults.set(password.text, forKey: "password")
+        defaults.set(mqttServerText.text, forKey: "mqttServer")
+        defaults.set(mqttUserText.text, forKey: "mqttUser")
+        defaults.set(mqttPassword.text, forKey: "mqttPassword")
+        
+        defaults.set(apiServerText.text, forKey: "apiServer")
+        defaults.set(apiPortText.text, forKey: "apiPort")
+        defaults.set(apiUserIDText.text, forKey: "apiUserID")
+        
         defaults.set(distanceFilterText.text, forKey: "distanceFilter")
+        
+ 
         
         self.performSegue(withIdentifier: "unwindToView", sender: self)
     }

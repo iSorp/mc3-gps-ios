@@ -12,69 +12,72 @@ import CoreLocation
 //import GoogleMaps
 import MapKit
 
-
-class ViewController: UIViewController {
-    let defaults = UserDefaults.standard
+///
+/// ViewController for map.
+///
+class ViewController: UIViewController, MKMapViewDelegate {
     
-    var currentPosition:Position = Position(longitude: 0,latitude: 0,heigt: 0)
+    /// global position Variable
+    public var currentPosition:Position = Position(latitude: 0,longitude: 0,altitude: 0)
     
     @IBOutlet var mapView:MKMapView!
     @IBOutlet var distanceFilterText:UITextField!
     @IBOutlet var bgButton:UIButton!
     
-    // set initial location in Honolulu
-    let initialLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
-    let locationManager = CLLocationManager()
+    var annotationView = MKMarkerAnnotationView()
+    
+    let defaults = UserDefaults.standard
+    let regionRadius: CLLocationDistance = 1000
+    let initialLocation = CLLocation(latitude: 0, longitude: 0)
     let mqtt = MqttController()
-    let httpClient:HttpClient = HttpClient(host:"localhost")
+    let restClient = RestClient()
     
     let topic_dop = "location/dop/";
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(appMovedToEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(appMovedToEnterForeground), name: UIApplication.willResignActiveNotification, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(appTerminate), name: UIApplication.willTerminateNotification, object: nil)
+        mapView.delegate = self
+        
+       NotificationCenter.default.addObserver(self, selector: #selector(appTerminate), name: UIApplication.willTerminateNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(positionChanged(_:)), name: Notification.Name.locationChange, object: nil)
         
         centerMapOnLocation(location: initialLocation)
-        enableLocationServices()
-        
         mqtt.subscribe(topic: topic_dop, callback: onMessageReceive)
         mqtt.connect()
     }
     
-    @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue) {}
-    
-    
+    //************************* APP Handling *************************
     @objc func appTerminate() {
-        //startReceivingLocationChanges()
         mqtt.disconnect()
     }
     
-    @objc func appMovedToEnterForeground() {
-        locationManager.startUpdatingLocation()
+    @objc func positionChanged(_ notification: Notification) {
+        
+       if let userInfo = notification.userInfo, let locations = userInfo["locations"] as? [CLLocation] {
+            do {
+                let location = locations.last!
+                currentPosition = Position(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, altitude: location.altitude)
+                
+                let coordinateRegion = MKCoordinateRegion(center: location.coordinate,latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+                mapView.setRegion(coordinateRegion, animated: true)
+                let current = MKPointAnnotation()
+                current.title = String(format:"b:%.3f, l:%.3f, a:%.3f", currentPosition.latitude, currentPosition.longitude, currentPosition.altitude)
+                current.coordinate = CLLocationCoordinate2D(latitude: coordinateRegion.center.latitude, longitude:coordinateRegion.center.longitude)
+                
+                // Post current position to the map
+                mapView.addAnnotation(current)
+            } catch let error as Error {
+                print(error.localizedDescription)
+            }
+        }
     }
     
-    
-    @objc func appMovedToBackground() {
-        locationManager.stopUpdatingLocation()
-        locationManager.startMonitoringSignificantLocationChanges()
-    }
-    
-    
-    let regionRadius: CLLocationDistance = 1000
-    func centerMapOnLocation(location: CLLocation) {
-        let coordinateRegion = MKCoordinateRegion(center: location.coordinate,
-                                                  latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
-        mapView.setRegion(coordinateRegion, animated: true)
-    }
-    
+    //************************* Actions *************************
     @IBAction func distanceFilterEditingDidEnd(_ sender: UITextField) {
         if let text = sender.text as? String {
-            locationManager.distanceFilter = Double(text)!
+            // reload
+            LocationManager.Instance.enableLocationServices()
         }
     }
     
@@ -82,6 +85,21 @@ class ViewController: UIViewController {
         UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
     }
     
+    @IBAction func locButtonOnClick(sender: UIButton!) {
+        PersistentManager.Instance.exec()
+        restClient.getLocations(completion:printLocations)
+    }
+    
+    @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue) {
+        
+    }
+    
+    //************************* Callbacks *************************
+    func onMessageReceive(topic:String, data: String?) {
+        print("mqtt received")
+    }
+    
+    //************************* Map control *************************
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if segue.destination is ViewControllerDop
@@ -91,63 +109,56 @@ class ViewController: UIViewController {
         }
     }
     
-}
-
-extension ViewController : CLLocationManagerDelegate {
+    func centerMapOnLocation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegion(center: location.coordinate,
+                                                  latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
     
-    func enableLocationServices() {
-        locationManager.delegate = self
+    func printLocations(result:RestClient.Result<LocationStructs.Locations>) {
         
-        switch CLLocationManager.authorizationStatus() {
-        case .notDetermined:
-            // Request when-in-use authorization initially
-            locationManager.requestWhenInUseAuthorization()
-            return
-            
-        case .restricted, .denied:
-            // Disable location features
-            return
-            
-        case .authorizedWhenInUse:
-            // Enable basic location features
-            break
-            
-        case .authorizedAlways:
-            // Enable any of your app's location features
-            break
+        var message:String = ""
+        switch result {
+        case .success(let response):
+            for loc in response.embedded.locations {
+                let point = LoadedAnnotation(loc.latitude, loc.longitude, title: String(format:"b:%.3f, l:%.3f, a:%.3f", loc.latitude, loc.longitude, loc.altitude))
+                mapView.addAnnotation(point)
+            }
+        case .failure(let error):
+            //fatalError("error: \(error.localizedDescription)")
+            message = "error: \(error.localizedDescription)"
+        }
+    }
+    
+    /// Prints different colored Markers (green:new position, red:from database)
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard annotation is MKPointAnnotation else { return nil }
+        var color:UIColor = .green
+        var identifier = "default"
+        
+        if annotation is LoadedAnnotation {
+            color = .red
+            identifier = "loaded"
         }
         
-        // Configure and start the service.
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = Double(defaults.string(forKey: "distanceFilter") ?? "10")! // In meters.
-        locationManager.delegate = self
-        locationManager.stopMonitoringSignificantLocationChanges()
-        locationManager.startUpdatingLocation()
-    }
-    
-    
-    func locationManager(_ manager: CLLocationManager,  didUpdateLocations locations: [CLLocation]) {
-        let location = locations.last!
-        currentPosition = Position(longitude: location.coordinate.longitude, latitude: location.coordinate.latitude, heigt: location.altitude)
+        if let dequedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+            as? MKMarkerAnnotationView {
+            annotationView = dequedView
+        } else{
+            annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+        }
+        annotationView.markerTintColor = .green
         
-        let coordinateRegion = MKCoordinateRegion(center: location.coordinate,latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
-        mapView.setRegion(coordinateRegion, animated: true)
-        let current = MKPointAnnotation()
-        current.title = "pos"
-        current.coordinate = CLLocationCoordinate2D(latitude: coordinateRegion.center.latitude, longitude:coordinateRegion.center.longitude)
-        mapView.addAnnotation(current)
-        
-        httpClient.postPosition(position: currentPosition)
-        
+        return annotationView
     }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
+    /// Marker class for location originated in database
+    class LoadedAnnotation:NSObject, MKAnnotation {
+        var coordinate: CLLocationCoordinate2D
+        var title: String?
+        init(_ latitude:CLLocationDegrees,_ longitude:CLLocationDegrees,title:String){
+            self.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+            self.title = title
+        }
     }
-    
-    
-    func onMessageReceive(topic:String, data: String?) {
-        print("mqtt received")
-    }
-    
 }

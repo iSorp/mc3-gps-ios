@@ -31,16 +31,24 @@
                                             <fragment content="desiredAccuracy"/>
                                         </attributedString>
                                     </mapView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yud-pq-g0J">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NYd-6Z-YYT">
                                         <rect key="frame" x="0.0" y="553" width="375" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Calc DOP"/>
+                                        <state key="normal" title="Get Locations"/>
+                                        <connections>
+                                            <action selector="locButtonOnClickWithSender:" destination="jt4-EO-Wzw" eventType="primaryActionTriggered" id="ksl-2h-HyQ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yud-pq-g0J">
+                                        <rect key="frame" x="0.0" y="592" width="375" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Dilution of precision"/>
                                         <connections>
                                             <segue destination="xnF-Zg-ks5" kind="presentation" id="JTg-D9-eNE"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rZj-xS-msP">
-                                        <rect key="frame" x="0.0" y="592" width="375" height="36"/>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rZj-xS-msP">
+                                        <rect key="frame" x="0.0" y="629.5" width="375" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Run in background"/>
                                         <connections>
@@ -88,7 +96,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" axis="vertical" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="AMH-vt-zwy">
-                                <rect key="frame" x="16" y="40" width="343" height="239"/>
+                                <rect key="frame" x="16" y="40" width="343" height="381.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="X37-Be-Xnj">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
@@ -136,14 +144,41 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GPS Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FIf-s1-nWI" userLabel="GPS Settings">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="API Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Acq-t9-afL" userLabel="GPS Settings">
                                         <rect key="frame" x="0.0" y="180.5" width="343" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="distanceFilter" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bYa-ia-l6t">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Server" textAlignment="natural" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="kaj-re-FSK" userLabel="Server">
                                         <rect key="frame" x="0.0" y="209" width="343" height="30"/>
+                                        <accessibility key="accessibilityConfiguration" hint="Server"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Port" textAlignment="natural" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="fO4-bh-1U1" userLabel="Server">
+                                        <rect key="frame" x="0.0" y="247" width="343" height="30"/>
+                                        <accessibility key="accessibilityConfiguration" hint="Port"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User ID" textAlignment="natural" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="OYB-hv-vTe" userLabel="UserID">
+                                        <rect key="frame" x="0.0" y="285" width="343" height="30"/>
+                                        <accessibility key="accessibilityConfiguration" hint="User ID"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GPS Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FIf-s1-nWI" userLabel="GPS Settings">
+                                        <rect key="frame" x="0.0" y="323" width="343" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="distanceFilter" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bYa-ia-l6t">
+                                        <rect key="frame" x="0.0" y="351.5" width="343" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -161,10 +196,13 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="apiPortText" destination="fO4-bh-1U1" id="eYR-Cc-8a9"/>
+                        <outlet property="apiServerText" destination="kaj-re-FSK" id="VfL-ZT-Pnr"/>
+                        <outlet property="apiUserIDText" destination="OYB-hv-vTe" id="ebP-Uz-DGW"/>
                         <outlet property="distanceFilterText" destination="bYa-ia-l6t" id="ix7-5q-Iuu"/>
-                        <outlet property="password" destination="abd-NF-J3H" id="YtP-YW-P2s"/>
-                        <outlet property="serverText" destination="SJE-16-2wr" id="l1r-6D-oPy"/>
-                        <outlet property="userText" destination="smA-ch-VdI" id="DnC-wT-OcX"/>
+                        <outlet property="mqttPassword" destination="abd-NF-J3H" id="lw0-3G-H9H"/>
+                        <outlet property="mqttServerText" destination="SJE-16-2wr" id="CRG-ap-osm"/>
+                        <outlet property="mqttUserText" destination="smA-ch-VdI" id="GfQ-He-xlS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fNQ-fK-ids" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -224,6 +262,7 @@
                                         <date key="date" timeIntervalSinceReferenceDate="582306030.81705594">
                                             <!--2019-06-15 15:40:30 +0000-->
                                         </date>
+                                        <locale key="locale" localeIdentifier="gsw"/>
                                     </datePicker>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sv0-Dy-wCT">
                                         <rect key="frame" x="0.0" y="366.5" width="343" height="36"/>

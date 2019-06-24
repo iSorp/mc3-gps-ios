@@ -1,21 +1,24 @@
 //
-//  HttpClient.swift
+//  RestClient
 //  mc3-gps
 //
 //  Created by Simon Wälti on 16.06.19.
 //  Copyright © 2019 Simon Wälti. All rights reserved.
 //
-
 import Foundation
 
-class HttpClient {
+class RestClient {
     
-    public var host:String = "localhost"
-    public var port:Int?
+    let defaults = UserDefaults.standard
     
-    public init(host: String, port:Int? = 8090) {
-        self.host = host
-        self.port = port;
+    var host:String
+    var port:Int
+    var userID:Int
+    
+    public init() {
+        self.host = defaults.string(forKey: "apiServer") ?? ""
+        self.port = Int(defaults.string(forKey: "apiPort") ?? "") ?? 8080
+        self.userID = Int(defaults.string(forKey: "apiUserID") ?? "") ?? 1
     }
     
     enum Result<Value> {
@@ -23,8 +26,16 @@ class HttpClient {
         case failure(Error)
     }
     
+    struct Post: Codable {
+        let longitude: Double
+        let latitude: Double
+        let altitude: Double
+        let timestamp: String
+        let user: String
+    }
     
-    func postPosition(position:Position) {
+    //************************* POST requests *************************
+    func postPosition(position:Position, completion: (() -> Void)? = nil) {
         var urlComponents = URLComponents()
         urlComponents.scheme = "http"
         urlComponents.host = host
@@ -43,9 +54,13 @@ class HttpClient {
         // Now let's encode out Post struct into JSON data...
         let encoder = JSONEncoder()
         do {
-            let p:String = String(port!)
-            let user = "http://" + host + ":" + p + "/users/2" // User hack
-            let post = LocationStructs.Post(longitude: position.longitude, latitude: position.latitude, user: user)
+            let user = "http://" + host + ":" + String(port) + "/users/" + String(userID)
+            let post = Post(
+                longitude: position.longitude,
+                latitude: position.latitude,
+                altitude: position.altitude,
+                timestamp: position.date!,
+                user: user)
             
             let jsonData = try encoder.encode(post)
             request.httpBody = jsonData
@@ -59,7 +74,6 @@ class HttpClient {
         let session = URLSession(configuration: config)
         let task = session.dataTask(with: request) { (responseData, response, responseError) in
             guard responseError == nil else {
-              
                 return
             }
             
@@ -69,11 +83,13 @@ class HttpClient {
             } else {
                 print("no readable data received in response")
             }
+            completion?()
         }
         task.resume()
     }
     
-    func getUsers(completion: ((Result<UserStructs.Welcome>) -> Void)?) {
+    //************************* GET requests *************************
+    func getUsers(completion: ((Result<UserStructs.Users>) -> Void)?) {
         var urlComponents = URLComponents()
         urlComponents.scheme = "http"
         urlComponents.host = host
@@ -86,7 +102,27 @@ class HttpClient {
         
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
-        decodeStruct(request:request, session:session, completion:completion)
+        decodeStructAsync(request:request, session:session, completion:completion)
+    }
+    
+    func getLocations(completion: ((Result<LocationStructs.Locations>) -> Void)?) {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "http"
+        urlComponents.host = host
+        urlComponents.port = port
+        urlComponents.path = "/locations"
+        urlComponents.queryItems = [
+            URLQueryItem(name: "size", value: "10000000"),
+        ]
+        
+        guard let url = urlComponents.url else { fatalError("Could not create URL from components") }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        decodeStructAsync(request:request, session:session, completion:completion)
     }
     
     func getDop(date:String, phi:String, lambda:String, height:String, angle:String, completion: ((Result<String>) -> Void)?) {
@@ -110,10 +146,10 @@ class HttpClient {
         
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
-        decodeValue(request:request, session:session, completion:completion)
+        decodeValueAsync(request:request, session:session, completion:completion)
     }
     
-    func getBestDop(date:String, phi:String, lambda:String, height:String, angle:String, minutes: String, completion: ((Result<DopStructs.Welcome>) -> Void)?) {
+    func getBestDop(date:String, phi:String, lambda:String, height:String, angle:String, minutes: String, completion: ((Result<DopStructs.Dops>) -> Void)?) {
         var urlComponents = URLComponents()
         urlComponents.scheme = "http"
         urlComponents.host = host
@@ -135,10 +171,11 @@ class HttpClient {
         
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
-        decodeStruct(request:request, session:session, completion:completion)
+        decodeStructAsync(request:request, session:session, completion:completion)
     }
     
-    func decodeStruct<T: Decodable>(request:URLRequest, session:URLSession, completion: ((Result<T>) -> Void)?) {
+    //************************* AsyncTasks *************************
+    func decodeStructAsync<T: Decodable>(request:URLRequest, session:URLSession, completion: ((Result<T>) -> Void)?) {
         
         let task = session.dataTask(with: request) { (responseData, response, responseError) in
             DispatchQueue.main.async {
@@ -169,7 +206,7 @@ class HttpClient {
         task.resume()
     }
     
-    func decodeValue<T>(request:URLRequest, session:URLSession, completion: ((Result<T>) -> Void)?) {
+    func decodeValueAsync<T>(request:URLRequest, session:URLSession, completion: ((Result<T>) -> Void)?) {
         
         let task = session.dataTask(with: request) { (responseData, response, responseError) in
             DispatchQueue.main.async {
@@ -198,4 +235,3 @@ class HttpClient {
         task.resume()
     }
 }
-

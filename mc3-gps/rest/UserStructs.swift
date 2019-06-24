@@ -1,16 +1,16 @@
 // This file was generated from JSON Schema using quicktype, do not modify it directly.
 // To parse the JSON, add this file to your project and do:
 //
-//   let welcome = try? newJSONDecoder().decode(Welcome.self, from: jsonData)
-//  https://app.quicktype.io
+//   let users = try? newJSONDecoder().decode(Users.self, from: jsonData)
+// https://app.quicktype.io
+
 
 import Foundation
-
-class LocationStructs {
-    // MARK: - Welcome
-    struct Welcome: Codable {
+class UserStructs {
+    // MARK: - Users
+    struct Users: Codable {
         let embedded: Embedded
-        let links: WelcomeLinks
+        let links: UsersLinks
         let page: Page
         
         enum CodingKeys: String, CodingKey {
@@ -22,27 +22,27 @@ class LocationStructs {
 
     // MARK: - Embedded
     struct Embedded: Codable {
-        let locations: [Location]
+        let users: [User]
     }
 
-    // MARK: - Location
-    struct Location: Codable {
-        let longitude, latitude: Double
-        let links: LocationLinks
+    // MARK: - User
+    struct User: Codable {
+        let firstName, lastName: String?
+        let links: UserLinks
         
         enum CodingKeys: String, CodingKey {
-            case longitude, latitude
+            case firstName, lastName
             case links = "_links"
         }
     }
 
-    // MARK: - LocationLinks
-    struct LocationLinks: Codable {
-        let linksSelf, location, user: Profile
+    // MARK: - UserLinks
+    struct UserLinks: Codable {
+        let linksSelf, user: Profile
         
         enum CodingKeys: String, CodingKey {
             case linksSelf = "self"
-            case location, user
+            case user
         }
     }
 
@@ -51,8 +51,8 @@ class LocationStructs {
         let href: String
     }
 
-    // MARK: - WelcomeLinks
-    struct WelcomeLinks: Codable {
+    // MARK: - UsersLinks
+    struct UsersLinks: Codable {
         let linksSelf: SelfClass
         let profile: Profile
         
@@ -71,14 +71,5 @@ class LocationStructs {
     // MARK: - Page
     struct Page: Codable {
         let size, totalElements, totalPages, number: Int
-    }
-    
-    
-    
-    
-    struct Post: Codable {
-        let longitude: Double
-        let latitude: Double
-        let user: String
     }
 }

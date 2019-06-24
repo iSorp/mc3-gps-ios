@@ -4,4 +4,5 @@ target 'mc3-gps' do
     
     project 'mc3-gps.xcodeproj'
     pod 'CocoaMQTT'
+    pod 'ReachabilitySwift'
 end
