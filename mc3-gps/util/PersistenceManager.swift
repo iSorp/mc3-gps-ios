@@ -10,9 +10,9 @@ import SQLite3
 import Reachability
 import CoreLocation
 
-class PersistentManager : ReachabilityObserverDelegate {
+class PersistenceManager : ReachabilityObserverDelegate {
 
-    static let instance : PersistentManager = PersistentManager()
+    static let instance : PersistenceManager = PersistenceManager()
     
     let restClient = RestClient()
     let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
@@ -35,7 +35,7 @@ class PersistentManager : ReachabilityObserverDelegate {
         """
     
     /// Singleton instance
-    class var Instance : PersistentManager {
+    class var Instance : PersistenceManager {
         return instance
     }
     

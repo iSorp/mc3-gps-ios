@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         
         // bei background fetch datenbank mit Server Synchronisieren (bei WIFI)
-        PersistentManager.Instance.exec()
+        PersistenceManager.Instance.exec()
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:

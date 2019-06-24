@@ -86,7 +86,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func locButtonOnClick(sender: UIButton!) {
-        PersistentManager.Instance.exec()
+        PersistenceManager.Instance.exec()
         restClient.getLocations(completion:printLocations)
     }
     
