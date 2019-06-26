@@ -41,7 +41,7 @@ class PersistenceManager : ReachabilityObserverDelegate {
     
     fileprivate init() {
         
-        destroyDatabase(fileURL:fileURL)
+        //destroyDatabase(fileURL:fileURL)
         guard let db = openDatabase(fileURL: fileURL) else {
             return
         }
@@ -59,15 +59,8 @@ class PersistenceManager : ReachabilityObserverDelegate {
     
     /// If wifi is avaiable post prefetched locations
     func reachabilityChanged(_ isReachable: Bool, connection:Reachability.Connection) {
-        switch connection {
-            
-        case .none: break;
-        case .wifi:
-            if isReachable {
-                exec()
-            }
-        case .cellular:break;
-        @unknown default:break;
+        if isReachable {
+            exec()
         }
     }
     
@@ -96,8 +89,8 @@ class PersistenceManager : ReachabilityObserverDelegate {
     }
     
     /// Post prefetched locations
-    func exec() {
-        if getConnection() == .wifi  {
+    func exec(force:Bool=false) {
+        if getConnection() == .wifi || force  {
             let entries = getPositions()
             for entry in entries {
                 restClient.postPosition(position:entry)

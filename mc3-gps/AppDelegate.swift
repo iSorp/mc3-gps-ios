@@ -13,18 +13,24 @@ import CoreLocation
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    
+    let persistenceManager = PersistenceManager.Instance
+    let geoFenceManager = GeoFenceManager.instance
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         
-        // bei background fetch datenbank mit Server Synchronisieren (bei WIFI)
+        // bei background fetch interne datenbank auf Server posten (bei WIFI)
         PersistenceManager.Instance.exec()
+        completionHandler (UIBackgroundFetchResult.newData)
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:
         [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // background fetch von 10 min
-        application.setMinimumBackgroundFetchInterval(600)
+        // background fetch
+        application.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
+        application.registerUserNotificationSettings(UIUserNotificationSettings(types: [.alert, .alert, .sound], categories: nil))
+        
+        application.beginBackgroundTask(withName: "showNotification", expirationHandler: nil)
+
         return true
     }
     

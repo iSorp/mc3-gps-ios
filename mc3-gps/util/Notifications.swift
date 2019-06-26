@@ -11,4 +11,6 @@ import Foundation
 
 extension Notification.Name {
     static let locationChange = Notification.Name("locationChange")
+    static let enterRegion = Notification.Name("enterRegion")
+    static let exitRegion = Notification.Name("exitRegion")
 }

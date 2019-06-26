@@ -29,6 +29,7 @@
 		F45F620A22B6A33800354E41 /* ViewControllerDop.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F620922B6A33800354E41 /* ViewControllerDop.swift */; };
 		F4ABEB8022BEC3D5008C06E8 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ABEB7F22BEC3D5008C06E8 /* PersistenceManager.swift */; };
 		F4ABEB8222BF74E5008C06E8 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ABEB8122BF74E5008C06E8 /* LocationManager.swift */; };
+		F4B2273C22C3BE7200133674 /* GeoFenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B2273B22C3BE7200133674 /* GeoFenceManager.swift */; };
 		F4BF378C227384C200FEE995 /* ViewControllerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF378B227384C200FEE995 /* ViewControllerSettings.swift */; };
 		F4FB88632261FDDA00471DDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FB88622261FDDA00471DDC /* AppDelegate.swift */; };
 		F4FB88652261FDDA00471DDC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FB88642261FDDA00471DDC /* ViewController.swift */; };
@@ -107,6 +108,7 @@
 		F45F620922B6A33800354E41 /* ViewControllerDop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerDop.swift; sourceTree = "<group>"; };
 		F4ABEB7F22BEC3D5008C06E8 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		F4ABEB8122BF74E5008C06E8 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		F4B2273B22C3BE7200133674 /* GeoFenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoFenceManager.swift; sourceTree = "<group>"; };
 		F4BF378B227384C200FEE995 /* ViewControllerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerSettings.swift; sourceTree = "<group>"; };
 		F4FB885F2261FDDA00471DDC /* mc3-gps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mc3-gps.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4FB88622261FDDA00471DDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				F4ABEB7F22BEC3D5008C06E8 /* PersistenceManager.swift */,
 				F4ABEB8122BF74E5008C06E8 /* LocationManager.swift */,
 				F40873BD22BFB5E2000C51CD /* Notifications.swift */,
+				F4B2273B22C3BE7200133674 /* GeoFenceManager.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -489,6 +492,7 @@
 				F45F620422B6A2AB00354E41 /* DopStructs.swift in Sources */,
 				F45F620322B6A2AB00354E41 /* UserStructs.swift in Sources */,
 				F45F620622B6A2AB00354E41 /* RestClient.swift in Sources */,
+				F4B2273C22C3BE7200133674 /* GeoFenceManager.swift in Sources */,
 				F408953722BE922700F26D04 /* SQLiteHelper.swift in Sources */,
 				F4BF378C227384C200FEE995 /* ViewControllerSettings.swift in Sources */,
 				F447F187226350E600A02FE4 /* MqttController.swift in Sources */,

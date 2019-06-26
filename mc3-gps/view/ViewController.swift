@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CoreLocation
+import CoreTelephony
 //import GoogleMaps
 import MapKit
 
@@ -86,14 +87,14 @@ class ViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func locButtonOnClick(sender: UIButton!) {
-        PersistenceManager.Instance.exec()
+        PersistenceManager.Instance.exec(force:true)
         restClient.getLocations(completion:printLocations)
     }
     
     @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue) {
         
     }
-    
+
     //************************* Callbacks *************************
     func onMessageReceive(topic:String, data: String?) {
         print("mqtt received")

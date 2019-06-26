@@ -7,6 +7,8 @@
 //
 import Foundation
 import CoreLocation
+import CoreTelephony
+
 
 enum LocationServiceMode {
     case update
@@ -32,7 +34,7 @@ class LocationManager : NSObject, CLLocationManagerDelegate {
     fileprivate override init() {
         super.init()
     }
-
+    
     /// Start updating Location
     func enableLocationServices(mode:LocationServiceMode = LocationServiceMode.update) {
         
@@ -55,7 +57,6 @@ class LocationManager : NSObject, CLLocationManagerDelegate {
         }
     }
     
-    
     func disableLocationServices() {
         locationManager.stopMonitoringSignificantLocationChanges()
         locationManager.stopUpdatingLocation()
@@ -64,6 +65,14 @@ class LocationManager : NSObject, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager,  didUpdateLocations locations: [CLLocation]) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notification.Name.locationChange.rawValue), object: self, userInfo: ["locations" : locations])
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notification.Name.enterRegion.rawValue), object: self, userInfo: ["region" : region])
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notification.Name.exitRegion.rawValue), object: self, userInfo: ["region" : region])
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
